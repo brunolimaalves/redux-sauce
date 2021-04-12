@@ -7,7 +7,7 @@ const TodoList = ( { todos, addTodo, toggleTodo, removeTodo } ) => {
 
     const [ todo , setTodo ] = useState('')
 
-    const onClickAddTodo = event => {
+    const onSubmitAddTodo = event => {
         event.preventDefault();
         addTodo( todo );
         setTodo('')
@@ -24,8 +24,9 @@ const TodoList = ( { todos, addTodo, toggleTodo, removeTodo } ) => {
     return (
         <div className="container">
             <div className="row">
-                <input className="input" value={ todo } onChange={ event => setTodo( event.target.value ) } />
-                <button className="btnAdicionar" onClick={ onClickAddTodo }> Adicionar </button>
+                <form onSubmit={onSubmitAddTodo}>
+                    <input className="input" placeholder="Task" value={ todo } onChange={ event => setTodo( event.target.value ) } />
+                </form>
             </div>
             <div>
                 <ul className="lista">
